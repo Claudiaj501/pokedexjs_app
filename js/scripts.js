@@ -8,6 +8,7 @@ let pokemonList = [
 
     {name:'Jigglypuff' , height: 50.8, weight: 5.49, type:['Normal', 'Fairy'], abilities:['Cure charm', 'Competitive'], weaknesses:['Steel', 'Poison']},
 
-    {},
+    {name:'Abra' , height: 88.9, weight: 19.5, type:'Psychic', abilities:['Inner focus', 'Synchronize'], weaknesses:['Ghost', 'Dark', 'Bug']},
+
     {}
   ];
