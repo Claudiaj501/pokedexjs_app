@@ -1,2 +1,2 @@
 // Declaring Pojemon List arracy
-let pokemonList = [];
+let pokemonList = [{name:' ' , height: , type:[' ', ' ',]},{},{},{},{},{},];
