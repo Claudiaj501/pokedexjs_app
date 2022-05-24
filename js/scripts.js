@@ -6,7 +6,8 @@ let pokemonList = [
 
     {name:'Squirtle' , height: 50.8, weight: 8.98, type:'Water', abilities: 'Torrent', weaknesses: ['Grass', 'Electric']},
 
-    {},
+    {name:'Pikachu' , height: 40.64, weight: 5.99, type:'Electric', abilities: 'Static', weaknesses: 'Ground'},
+
     {},
     {}
   ];
