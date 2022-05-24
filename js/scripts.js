@@ -10,5 +10,5 @@ let pokemonList = [
 
     {name:'Abra' , height: 88.9, weight: 19.5, type:'Psychic', abilities:['Inner focus', 'Synchronize'], weaknesses:['Ghost', 'Dark', 'Bug']},
 
-    {}
+    {name:'Gastly' , height: 129.54, weight: 0.09, type:['Ghost', 'Poison'], abilities:'Levitate', weaknesses:['Ghost', 'Dark', 'Psychic', 'Ground']}
   ];
