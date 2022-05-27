@@ -13,3 +13,9 @@ let pokemonList = [
 // Gastly
     {name:['Gastly'] , height: 129.54, weight: 0.09, type:['Ghost', 'Poison'], abilities:['Levitate'], weaknesses:['Ghost', 'Dark', 'Psychic', 'Ground']}
   ];
+
+
+
+  // Wiring Pokemon name and height onto DOM using 'for'
+  for (let i=0; i<pokemonList.length; i++){
+    document.write(pokemonList[i].name + ' '+ 'height is ''+ pokemonList[i].height +'cm!'');
