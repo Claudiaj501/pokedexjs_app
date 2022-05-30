@@ -13,3 +13,8 @@ let pokemonList = [
 // Gastly
     {name:'Gastly' , height: 129.54, weight: 0.09, type:['Ghost', 'Poison'], abilities:['Levitate'], weaknesses:['Ghost', 'Dark', 'Psychic', 'Ground']}
   ];
+
+// FOR loop. "i" is short for "item". To run the length of the array.
+for (let i=0; i < pokemonList.length; i++){
+    document.write(pokemonList[i].name + " ()" + pokemonLisr[i].height + "cm)");
+}
