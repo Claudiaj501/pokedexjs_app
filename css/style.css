@@ -1,0 +1,31 @@
+/* Colour Palette:
+Main colour (Tyrian Purple): #450B32
+Text Color (White): #FFFFFF;
+Button Colour: #9A87AB
+Visited menu color: #C2E812
+Active menu colour: #8B9EB7 */
+
+:root {
+  --text-color: #FFFFFF;
+
+}
+
+
+/* Font declartion */
+body {
+  color: var(--text-color);
+  font-family: 'Lato', sans-serif;
+  font-weight: 400; /*font = regular */
+  font-size: 16px;
+  /* Sets the font size to 16px */
+  line-height: 1.6;
+  /* Sets the line-height to 1.6 */
+}
+
+
+/* ALL PAGES */
+/* menu bar and logo */
+.page-header {
+display: flex;
+width: 100%;
+padding: 20px;
