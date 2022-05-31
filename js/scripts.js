@@ -16,5 +16,5 @@ let pokemonList = [
 
 // FOR loop. "i" is short for "item". To run the length of the array.
 for (let i=0; i < pokemonList.length; i++){
-    document.write(pokemonList[i].name + " ()" + pokemonLisr[i].height + "cm)");
+    document.write(pokemonList[i].name + " (" + pokemonList[i].height + "cm)"+ "<br>") ;
 }
