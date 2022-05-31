@@ -16,13 +16,13 @@ let pokemonList = [
 
 // FOR loop. "i" is short for "item". To run the length of the array.
 for (let i=0; i < pokemonList.length; i++){
-    document.write(pokemonList[i].name + " (" + pokemonList[i].height + "cm)"+ "<br>");
-}
-
 // Creating a condition to isolate the largest pokemon and give it a comment
 // First condition is to isolate a pokemon larger than 100cm. The rest must then print as normal
     if (pokemonList[i].height > 100) {
-        document.write(pokemonList[i].name + " (" + pokemonList[i].height + "cm)- Wow, that\'s big!'" + "<br>");
+        document.write(pokemonList[i].name + " (" +
+        pokemonList[i].height + "cm)- Wow, that\'s big!'" + "<br>");
     } else {
-      document.write(pokemonList[i].name + " (" + pokemonList[i].height + "cm)"+ "<br>");
+        document.write(pokemonList[i].name + " (" +
+        pokemonList[i].height + "cm)"+ "<br>");
     }
+}
