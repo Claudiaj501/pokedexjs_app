@@ -6,7 +6,7 @@ Visited menu color: #C2E812
 Active menu colour: #8B9EB7 */
 
 :root {
-  --text-color: #FFFFFF;
+  --text-color: #000000;
 
 }
 
@@ -21,6 +21,8 @@ body {
   line-height: 1.6;
   /* Sets the line-height to 1.6 */
 }
+
+
 
 
 /* ALL PAGES */

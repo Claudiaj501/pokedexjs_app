@@ -26,3 +26,4 @@ for (let i=0; i < pokemonList.length; i++){
         pokemonList[i].height + "cm)"+ "<br>");
     }
 }
+pokemonList.name {bold : true}
