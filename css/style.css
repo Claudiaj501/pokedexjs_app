@@ -15,6 +15,10 @@ body {
 }
 
 
+/* box dizing declaration */
+* {
+  box-sizing: border-box;
+}
 
 
 /* ALL PAGES */
@@ -24,6 +28,14 @@ display: flex;
 width: 100%;
 padding: 20px;
 }
+
+
+/* centers pokemon logo   */
+.page-header {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
 
 /* centers the main body of the page   */
 .pokemon-text {
