@@ -14,15 +14,27 @@ let pokemonList = [
     {name:'Gastly' , height: 129.54, weight: 0.09, type:['Ghost', 'Poison'], abilities:['Levitate'], weaknesses:['Ghost', 'Dark', 'Psychic', 'Ground']}
   ];
 
-// FOR loop. "i" is short for "item". To run the length of the array.
-for (let i=0; i < pokemonList.length; i++){
-// Creating a condition to isolate the largest pokemon and give it a comment
-// First condition is to isolate a pokemon larger than 100cm. The rest must then print as normal
-    if (pokemonList[i].height > 100) {
-        document.write(pokemonList[i].name + " (" +
-        pokemonList[i].height + "cm)- Wow, that\'s big!'" + "<br>");
-    } else {
-        document.write(pokemonList[i].name + " (" +
-        pokemonList[i].height + "cm)"+ "<br>");
-    }
-}
+// // FOR loop. "i" is short for "item". To run the length of the array.
+// for (let i=0; i < pokemonList.length; i++){
+// // Creating a condition to isolate the largest pokemon and give it a comment
+// // First condition is to isolate a pokemon larger than 100cm. The rest must then print as normal
+//     if (pokemonList[i].height > 100) {
+//         document.write(pokemonList[i].name + " (" +
+//         pokemonList[i].height + "cm)- Wow, that\'s big!'" + "<br>");
+//     } else {
+//         document.write(pokemonList[i].name + " (" +
+//         pokemonList[i].height + "cm)"+ "<br>");
+//     }
+// }
+
+
+// foreach
+pokemonList.forEach(function(pokemon) {
+  if (pokemon.height > 100) {
+      document.write(pokemon.name + " (" +
+      pokemon.height + "cm)- Wow, that\'s big!'" + "<br>");
+  } else {
+      document.write(pokemon.name + " (" +
+      pokemon.height + "cm)"+ "<br>");
+  }
+});
