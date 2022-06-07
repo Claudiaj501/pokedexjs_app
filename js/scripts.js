@@ -29,12 +29,23 @@ let pokemonList = [
 
 
 // foreach
-pokemonList.forEach(function(pokemon) {
-  if (pokemon.height > 100) {
-      document.write(pokemon.name + " (" +
-      pokemon.height + "cm)- Wow, that\'s big!'" + "<br>");
+// pokemonList.forEach(function(pokemon) {
+//   if (pokemon.height > 100) {
+//       document.write(pokemon.name + " (" +
+//       pokemon.height + "cm)- Wow, that\'s big!'" + "<br>");
+//   } else {
+//       document.write(pokemon.name + " (" +
+//       pokemon.height + "cm)"+ "<br>");
+//   }
+// });
+
+let pokemon = (function(){
+    return pokemonList.forEach(function(pokemon) {
+          if (pokemon.height > 100) {
+          document.write(pokemon.name + " (" +
+          pokemon.height + "cm)- Wow, that\'s big!'" + "<br>");
   } else {
       document.write(pokemon.name + " (" +
       pokemon.height + "cm)"+ "<br>");
   }
-});
+})(pokemon);
