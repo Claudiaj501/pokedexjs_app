@@ -1,5 +1,6 @@
-// Declaring Pojemon List arracy
-let pokemonList = [
+// Declaring Pojemon List arracy - wrapped in IIFE
+const pokemonRepository = (function () {
+  const pokemonList = [
 // Bulbasaur
     {name:'Bulbasaur' , height: 71.12, weight: 6.89, type:['Grass', 'Poison'], abilities: ['Overgrow'], weaknesses: ['Fire', 'Psychic', 'Ice', 'Flying'] },
 // Charmander
@@ -13,6 +14,18 @@ let pokemonList = [
 // Gastly
     {name:'Gastly' , height: 129.54, weight: 0.09, type:['Ghost', 'Poison'], abilities:['Levitate'], weaknesses:['Ghost', 'Dark', 'Psychic', 'Ground']}
   ];
+  function add (pokemon) {
+    pokemonList.push(pokemon);
+  }
+
+  function getAll () {
+    return pokemonList;
+  }
+  return {
+    add: add,
+    getAll: getAll
+  };
+})();
 
 // // FOR loop. "i" is short for "item". To run the length of the array.
 // for (let i=0; i < pokemonList.length; i++){
