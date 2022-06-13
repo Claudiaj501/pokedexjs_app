@@ -1,6 +1,6 @@
 // Declaring Pojemon List arracy - wrapped in IIFE
-const pokemonRepository = (function () {
-  const pokemonList = [
+let pokemonRepository = (function () {
+  let repos = [
 // Bulbasaur
     {name:'Bulbasaur' , height: 71.12, weight: 6.89, type:['Grass', 'Poison'], abilities: ['Overgrow'], weaknesses: ['Fire', 'Psychic', 'Ice', 'Flying'] },
 // Charmander
@@ -14,18 +14,45 @@ const pokemonRepository = (function () {
 // Gastly
     {name:'Gastly' , height: 129.54, weight: 0.09, type:['Ghost', 'Poison'], abilities:['Levitate'], weaknesses:['Ghost', 'Dark', 'Psychic', 'Ground']}
   ];
-  function add (pokemon) {
-    pokemonList.push(pokemon);
+  // manipulating DOM 
+  function add(pokemon) {
+    if (
+      typeof pokemon === "object" &&
+      "name" in pokemon &&
+      "height" in pokemon &&
+      "type" in pokemon
+    ) {
+      repos.push(pokemon);
+    } else {
+      console.log("pokemon is incorrect");
+    }
   }
-
-  function getAll () {
-    return pokemonList;
+  function getAll() {
+    return repos;
+  }
+  function addListItem(pokemon){
+    let pokemonList = document.querySelector(".pokemon-list");
+    let listPokemon = document.createElement("li");
+    let button = document.createElement("button");
+    button.innerText = pokemon.name;
+    button.classList.add("button-class");
+    listPokemon.appendChild(button);
+    pokemonList.appendChild(listPokemon);
   }
   return {
     add: add,
-    getAll: getAll
+    getAll: getAll,
+    addListItem: addListItem
   };
 })();
+
+pokemonRepository.add({ name: 'Caterpie', height: 30.48, weight: 2.9, type: ['Bug'], abilities:['Shield Dust'], weaknesses:['Fire', 'Flying', 'Rock'] });
+
+console.log(pokemonRepository.getAll());
+
+pokemonRepository.getAll().forEach(function (pokemon) {
+  pokemonRepository.addListItem(pokemon);
+});
 
 // // FOR loop. "i" is short for "item". To run the length of the array.
 // for (let i=0; i < pokemonList.length; i++){
@@ -51,15 +78,3 @@ const pokemonRepository = (function () {
 //       pokemon.height + "cm)"+ "<br>");
 //   }
 // });
-
-
-// foreach loop
-pokemonRepository.getAll().forEach(function(pokemon) {
-  let pokemonNewList = document.queryselector(".pokemon-list");
-  let listPokemon = document.createElement("li");
-  let button = document.createElement("button");
-  button.innerText = "placeholder";
-  button.classList.add("button-class");
-  listPokemon.appendChild(button);
-  pokemonNewList.appendChild(listPokemon);
-});
