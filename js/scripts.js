@@ -55,11 +55,11 @@ const pokemonRepository = (function () {
 
 // foreach loop
 pokemonRepository.getAll().forEach(function(pokemon) {
-  let pokemonList = document.queryselector(".pokemon-list");
+  let pokemonNewList = document.queryselector(".pokemon-list");
   let listPokemon = document.createElement("li");
   let button = document.createElement("button");
   button.innerText = "placeholder";
   button.classList.add("button-class");
   listPokemon.appendChild(button);
-  pokemonList.appendChild(listPokemon);
+  pokemonNewList.appendChild(listPokemon);
 });
