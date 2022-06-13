@@ -42,12 +42,24 @@ const pokemonRepository = (function () {
 
 
 // foreach loop
+// pokemonRepository.getAll().forEach(function(pokemon) {
+//   if (pokemon.height > 100) {
+//       document.write(pokemon.name + " (" +
+//       pokemon.height + "cm)- Wow, that\'s big!'" + "<br>");
+//   } else {
+//       document.write(pokemon.name + " (" +
+//       pokemon.height + "cm)"+ "<br>");
+//   }
+// });
+
+
+// foreach loop
 pokemonRepository.getAll().forEach(function(pokemon) {
-  if (pokemon.height > 100) {
-      document.write(pokemon.name + " (" +
-      pokemon.height + "cm)- Wow, that\'s big!'" + "<br>");
-  } else {
-      document.write(pokemon.name + " (" +
-      pokemon.height + "cm)"+ "<br>");
-  }
+  let pokemonList = document.queryselector(".pokemon-list");
+  let listPokemon = document.createElement("li");
+  let button = document.createElement("button");
+  button.innerText = "placeholder";
+  button.classList.add("button-class");
+  listPokemon.appendChild(button);
+  pokemonList.appendChild(listPokemon);
 });
