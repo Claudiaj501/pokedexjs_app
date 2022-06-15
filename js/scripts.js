@@ -1,6 +1,6 @@
 // Declaring Pojemon List arracy - wrapped in IIFE
 let pokemonRepository = (function () {
-  let repos = [
+  let pokemonList = [
 // Bulbasaur
     {name:'Bulbasaur' , height: 71.12, weight: 6.89, type:['Grass', 'Poison'], abilities: ['Overgrow'], weaknesses: ['Fire', 'Psychic', 'Ice', 'Flying'] },
 // Charmander
@@ -22,14 +22,14 @@ let pokemonRepository = (function () {
       "height" in pokemon &&
       "type" in pokemon
     ) {
-      repos.push(pokemon);
+      pokemonList.push(pokemon);
     } else {
-      console.log("pokemon is invalid");
+      console.log("pokemon is invalid")
     }
   }
   // Retrieves pokemonList
   function getAll() {
-    return repos;
+    return pokemonList;
   }
   // Add buttons - these are assigned with data from pokemon list
   function addListItem(pokemon){
@@ -41,21 +41,22 @@ let pokemonRepository = (function () {
       listPokemon.appendChild(button);
       pokemonList.appendChild(listPokemon);
       button.addEventListener('click', function () {
-      showDetails(pokemon);
+          showDetails(pokemon);
     });
  }
 
  //Currently "clicked" pokemon - name will appear in console log
   function showDetails(pokemon) {
       console.log(pokemon);
-
+}
   return {
     add: add,
     getAll: getAll,
     addListItem: addListItem,
-    showDetails: showDetails
+    showDetails: showDetails,
 
   };
+  
 })();
 
 pokemonRepository.add({ name: 'Caterpie', height: 30.48, weight: 2.9, type: ['Bug'], abilities:['Shield Dust'], weaknesses:['Fire', 'Flying', 'Rock'] });
