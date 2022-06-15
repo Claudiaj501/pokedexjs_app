@@ -14,7 +14,7 @@ let pokemonRepository = (function () {
 // Gastly
     {name:'Gastly' , height: 129.54, weight: 0.09, type:['Ghost', 'Poison'], abilities:['Levitate'], weaknesses:['Ghost', 'Dark', 'Psychic', 'Ground']}
   ];
-  // manipulating DOM 
+  // manipulating DOM - FUNCTION : add pokemon and validate typeof
   function add(pokemon) {
     if (
       typeof pokemon === "object" &&
@@ -24,20 +24,24 @@ let pokemonRepository = (function () {
     ) {
       repos.push(pokemon);
     } else {
-      console.log("pokemon is incorrect");
+      console.log("pokemon is invalid");
     }
   }
+  // Retrieves pokemonList
   function getAll() {
     return repos;
   }
+  // Add buttons - these are assigned with data from pokemon list
   function addListItem(pokemon){
     let pokemonList = document.querySelector(".pokemon-list");
     let listPokemon = document.createElement("li");
     let button = document.createElement("button");
-    button.innerText = pokemon.name;
-    button.classList.add("button-class");
-    listPokemon.appendChild(button);
-    pokemonList.appendChild(listPokemon);
+      button.innerText = pokemon.name;
+      button.classList.add("button-class");
+      listPokemon.appendChild(button);
+      pokemonList.appendChild(listPokemon);
+      button.addEventListener('click', function () {
+      showDetails(pokemon);
   }
   return {
     add: add,
