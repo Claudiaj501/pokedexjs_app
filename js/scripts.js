@@ -42,11 +42,19 @@ let pokemonRepository = (function () {
       pokemonList.appendChild(listPokemon);
       button.addEventListener('click', function () {
       showDetails(pokemon);
-  }
+    });
+ }
+
+ //Currently "clicked" pokemon - name will appear in console log
+  function showDetails(pokemon) {
+      console.log(pokemon);
+
   return {
     add: add,
     getAll: getAll,
-    addListItem: addListItem
+    addListItem: addListItem,
+    showDetails: showDetails
+
   };
 })();
 
