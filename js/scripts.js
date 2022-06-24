@@ -1,3 +1,4 @@
+// IIFE function - pokemonList is now protected
 let pokemonRepository = function() {
   let pokemonList = [];
     let apiurl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
@@ -7,6 +8,7 @@ let pokemonRepository = function() {
     if (
       typeof pokemon === "object" &&
       "name" in pokemon &&
+      "detailsUrl" in pokemon
       // "height" in pokemon &&
       // "type" in pokemon
     ) {
@@ -49,7 +51,7 @@ let pokemonRepository = function() {
      console.error(e);
    })
  }
- 
+
  pokemonRepository.loadList().then(function() {
    // Now the data is loaded!
    pokemonRepository.getAll().forEach(function(pokemon){
