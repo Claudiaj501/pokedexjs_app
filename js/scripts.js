@@ -22,20 +22,27 @@ let pokemonRepository = function() {
     return pokemonList;
   }
   // Add buttons - these are assigned with data from pokemon list
-  function addListItem(pokemon){
-    let pokemonList = document.querySelector(".pokemon-list");
-    let listPokemon = document.createElement("li");
-    let button = document.createElement("button");
-      button.innerText = pokemon.name;
-      button.classList.add("button-class");
-      listPokemon.appendChild(button);
-      pokemonList.appendChild(listPokemon);
+  function addListItem(pokemon){  //Function - addListItem is used for DOM//
+    let pokemonList = document.querySelector(".pokemon-list"); //.pokemon-list is ul in index
+    let listPokemon = document.createElement("li"); // Creating listpokemon as a list
+    let button = document.createElement("button"); // creating a button
+      button.innerText = pokemon.name; // pokemon name text for button
+      button.classList.add("button-class"); // Having the button take on style from css
+      listPokemon.appendChild(button); // calling the listpokemon to the button
+      pokemonList.appendChild(listPokemon); // calling the pokemonList to the list
+      eventListener(button, pokemon);  //  added eventListener with two parameters
       button.addEventListener('click', function () {
           showDetails(pokemon);
     });
  }
- // Other functions remain here
 
+ function eventListener (button, pokemon) {  //eventListener has two parameters
+    button.addEventListener('click', function (){  //the function uses the event listner by click and calls showDetails
+      showDetails(pokemon);
+    });
+  }
+ // Other functions remain here
+// loadList function
   function loadList() {
     return fetch(apiUrl).then(function (response) {
       return response.json();
@@ -51,6 +58,35 @@ let pokemonRepository = function() {
      console.error(e);
    })
  }
+
+// loadDetails function
+ function loadDetails(item) {
+   let url = item.detailsUrl;
+   return fetch(url). then(function (response) {
+     return response.json();
+   }).then(function (details) {
+     item.imageUrl = details.sprites.font_default;
+     item.height = details.height;
+     item.types = details.types;
+   }).catch(function (e) {
+     console.error(e);
+   });
+ }
+
+ return {
+    add: add, //Calling add function
+    getAll: getAll, //Calling getAll function
+    addListItem: addListItem, //Calling addListItem function
+    loadList: loadList,
+    loadDetails: loadDetails,
+    showDetails: showDetails
+  };
+})();
+
+console.log(pokemonRepository.getAll());
+
+console.log(pokemonRepository.getAll());
+
 
  pokemonRepository.loadList().then(function() {
    // Now the data is loaded!
@@ -72,26 +108,6 @@ let pokemonRepository = function() {
 
   };
 
-})();
-
-pokemonRepository.add({ name: 'Caterpie', height: 30.48, weight: 2.9, type: ['Bug'], abilities:['Shield Dust'], weaknesses:['Fire', 'Flying', 'Rock'] });
-
-console.log(pokemonRepository.getAll());
-
-pokemonRepository.getAll().forEach(function (pokemon) {
-  pokemonRepository.addListItem(pokemon);
-});
-
-
-
-
-
-
-  return {
-    add: add,
-    getAll: getAll,
-    loadList: loadList
-  };
 })();
 
 
