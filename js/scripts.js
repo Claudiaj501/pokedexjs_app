@@ -103,3 +103,9 @@ function validateEmail() {
   let hasDot =  value.indexOf('.') > -1;
   return value && hasAtSign && hasDot;
 }
+
+// validate password
+function validatePassword() {
+  let value = passwordInput.value;
+  return value && value.length >= 8;
+}
