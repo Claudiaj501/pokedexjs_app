@@ -172,6 +172,28 @@ modalContainer.addEventListener('click', (e) => {
     }
   });
 
+  //Swipe function;
+  let touchstartX = 0;
+  let touchendX = 0;
+
+  function swipe(pokemon) {
+    //swipe left
+    if ((touchendX < (touchstartX-50)) && (pokemonList.indexOf(pokemon) < (pokemonList.length-1))) {
+      hideModal();
+      showDetails(pokemonList[pokemonList.indexOf(pokemon)+1]);
+      touchstartX = 0;
+      touchendX = 0;
+    }
+    //swipe right
+    if ((touchendX > (touchstartX+50)) && (pokemonList.indexOf(pokemon) > 0)) {
+      hideModal();
+      showDetails(pokemonList[pokemonList.indexOf(pokemon)-1]);
+      touchstartX = 0;
+      touchendX = 0;
+    }
+  }
+
+  
 
   return {
     add: add,         //Calling add function
