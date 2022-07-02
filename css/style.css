@@ -145,6 +145,28 @@ differences and focus ring */
 }
 
 
+.modal-close {
+  float: right;
+  margin-top: -25px;
+  margin-right: -25px;
+  cursor: pointer;
+  color: #faf9f8;
+  border: 1px solid #faf9f8;
+  border-radius: 50%;
+  background: #7691b2;
+  font-size: 31px;
+  font-weight: bold;
+  display: inline-block;
+  line-height: 0px;
+  padding: 11px 3px;
+}
+
+.modal-close::before {
+  content: "×";
+}
+
+
+
 
 
 /* adapting to different screen sizes */
