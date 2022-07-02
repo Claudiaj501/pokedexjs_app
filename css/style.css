@@ -4,6 +4,13 @@ Line break colour (black) : #000000;
 Header background colour (pokeball grey): #f0f0f0;
 button corder colour (pokemon logo light blue): #2a75bb;
 */
+:root {
+  /* text emphasis */
+  --light: 300;
+  --normal: 400;
+  --semibold: 600;
+}
+
 
 header {
   background-color: #f0f0f0;
