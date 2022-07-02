@@ -22,19 +22,19 @@ let pokemonRepository = (function () {  //  Entered the IIFE function and now th
   function addListItem(pokemon) {  // Function addListItem is used for DOM
     let pokemonList = document.querySelector(".pokemon-list");  //.pokemon-list is ul in index
     let listPokemon = document.createElement("li");   // Creating listpokemon as a list
-    let button = document.createElement("button");  // creating a button
-        button.innerText = pokemon.name;   // creating text to be pokemon names for button
-        button.classList.add("button-class");  // Having the button take on style from css
-        listPokemon.appendChild(button);  // calling the listpokemon to the button
+    let pokemonButton = document.createElement("button");  // creating a button
+        pokemonButton.innerText = pokemon.name;   // creating text to be pokemon names for button
+        pokemonButton.classList.add("button-class");  // Having the button take on style from css
+        listPokemon.appendChild(pokemonButton);  // calling the listpokemon to the button
         pokemonList.appendChild(listPokemon);  // calling the pokemonList to the list
-        eventListener(button, pokemon);  //  added eventListener with two parameters
-        button.addEventListener("click", function(event) {
+        eventListener(pokemonButton, pokemon);  //  added eventListener with two parameters
+        pokemonButton.addEventListener("click", function(event) {
         showDetails(pokemon);
     });
   }
 
-  function eventListener (button, pokemon) {  //eventListener has two parameters
-    button.addEventListener('click', function (){  //the function uses the event listner by click and calls showDetails
+  function eventListener (pokemonButton, pokemon) {  //eventListener has two parameters
+    pokemonButton.addEventListener('click', function (){  //the function uses the event listner by click and calls showDetails
     showDetails(pokemon);
     });
   }
