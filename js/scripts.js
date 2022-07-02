@@ -23,19 +23,19 @@ let pokemonRepository = (function () {  //  Entered the IIFE function and now th
     let pokemonList = document.querySelector(".pokemon-list");  //.pokemon-list is ul in index
     let listPokemon = document.createElement("li");   // Creating listpokemon as a list
     let button = document.createElement("button");  // creating a button
-    button.innerText = pokemon.name;   // creating text to be pokemon names for button
-    button.classList.add("button-class");  // Having the button take on style from css
-    listPokemon.appendChild(button);  // calling the listpokemon to the button
-    pokemonList.appendChild(listPokemon);  // calling the pokemonList to the list
-    eventListener(button, pokemon);  //  added eventListener with two parameters
-    button.addEventListener("click", function(event) {
-      showDetails(pokemon);
+        button.innerText = pokemon.name;   // creating text to be pokemon names for button
+        button.classList.add("button-class");  // Having the button take on style from css
+        listPokemon.appendChild(button);  // calling the listpokemon to the button
+        pokemonList.appendChild(listPokemon);  // calling the pokemonList to the list
+        eventListener(button, pokemon);  //  added eventListener with two parameters
+        button.addEventListener("click", function(event) {
+        showDetails(pokemon);
     });
   }
 
   function eventListener (button, pokemon) {  //eventListener has two parameters
     button.addEventListener('click', function (){  //the function uses the event listner by click and calls showDetails
-      showDetails(pokemon);
+    showDetails(pokemon);
     });
   }
 
@@ -52,8 +52,8 @@ let pokemonRepository = (function () {  //  Entered the IIFE function and now th
         hideLoader();
       });
     }).catch(function (e) {
-      console.error(e);
-      hideLoader();
+        console.error(e);
+        hideLoader();
     })
   }
 
@@ -69,8 +69,8 @@ let pokemonRepository = (function () {  //  Entered the IIFE function and now th
       item.types = details.types;
       hideLoader();
     }).catch(function (e) {
-      console.error(e);
-      hideLoader();
+        console.error(e);
+        hideLoader();
     });
   }
 
@@ -84,11 +84,11 @@ let pokemonRepository = (function () {  //  Entered the IIFE function and now th
   //show/hide pokeball loader
   function showLoader() {
     let loader = document.querySelector('.pokeball');
-    loader.classList.remove('hidden');
+        loader.classList.remove('hidden');
   }
   function hideLoader() {
     let loader = document.querySelector('.pokeball');
-    loader.classList.add('hidden');
+        loader.classList.add('hidden');
   }
 
 
@@ -98,25 +98,25 @@ let pokemonRepository = (function () {  //  Entered the IIFE function and now th
   function showModal(pokemon) {
     modalContainer.innerHTML = '';
     let modal = document.createElement('div');
-    modal.classList.add('modal');
-    modal.setAttribute("pointer-action", "none");
+        modal.classList.add('modal');
+        modal.setAttribute("pointer-action", "none");
 
     let closeButtonElement = document.createElement('button');
-    closeButtonElement.classList.add('modal-close');
-    closeButtonElement.addEventListener('click', hideModal);
+        closeButtonElement.classList.add('modal-close');
+        closeButtonElement.addEventListener('click', hideModal);
 
     //title = pokemon name
  let titleElement = document.createElement('h1');
- titleElement.innerText = pokemon.name;
+     titleElement.innerText = pokemon.name;
 
  //content element including...
   let contentElement = document.createElement('p');
   //..height
-  contentElement.innerHTML = "Height: "+pokemon.height+"<br>";
+      contentElement.innerHTML = "Height: "+pokemon.height+"<br>";
   //..and types
   let types = [];
-  pokemon.types.forEach(function(typeObj){
-    types.push(" "+typeObj.type.name);
+      pokemon.types.forEach(function(typeObj){
+      types.push(" "+typeObj.type.name);
   });
   //one or multiple types?
   if (types.length<2) {
@@ -129,8 +129,8 @@ let pokemonRepository = (function () {  //  Entered the IIFE function and now th
 
   //image of pokemon
    let imageElement = document.createElement('img');
-   imageElement.classList.add('pokemon-image');
-   imageElement.src = pokemon.imageUrl;
+       imageElement.classList.add('pokemon-image');
+       imageElement.src = pokemon.imageUrl;
 
 
   modal.appendChild(closeButtonElement);
@@ -193,23 +193,23 @@ modalContainer.addEventListener('click', (e) => {
     }
   }
 
-  
 
-  return {
-    add: add,         //Calling add function
-    getAll: getAll,    //Calling getAll function
-    addListItem: addListItem,  //Calling addListItem function
-    loadList: loadList,
-    loadDetails: loadDetails,
-    showDetails: showDetails
-  };
-})();
 
-console.log(pokemonRepository.getAll());
+  //return public functions
+   return {
+     getAll,
+     add,
+     findName,
+     addListItem,
+     loadList,
+     loadDetails
+   }
+ })();
 
-console.log(pokemonRepository.getAll());
 
+//print all objects in pokemon list
 pokemonRepository.loadList().then(function() {
+  //data is now loaded
   pokemonRepository.getAll().forEach(function (pokemon) {
     pokemonRepository.addListItem(pokemon);
   });
