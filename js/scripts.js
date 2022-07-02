@@ -63,6 +63,7 @@ let pokemonRepository = (function () {  //  Entered the IIFE function and now th
     return fetch(url). then(function (response) {
       return response.json();
     }).then(function (details) {
+      // Now add the details to the item
       item.imageUrl = details.sprites.font_default;
       item.height = details.height;
       item.types = details.types;
