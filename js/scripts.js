@@ -92,8 +92,21 @@ let pokemonRepository = (function () {  //  Entered the IIFE function and now th
   }
 
 
+  // Modal
+  let modalContainer = document.querySelector('#modal-container');
 
-  
+  function showModal(pokemon) {
+    modalContainer.innerHTML = '';
+    let modal = document.createElement('div');
+    modal.classList.add('modal');
+    modal.setAttribute("pointer-action", "none");
+
+    let closeButtonElement = document.createElement('button');
+    closeButtonElement.classList.add('modal-close');
+    closeButtonElement.addEventListener('click', hideModal);
+
+    
+
   return {
     add: add,         //Calling add function
     getAll: getAll,    //Calling getAll function
