@@ -49,14 +49,16 @@ let pokemonRepository = (function () {  //  Entered the IIFE function and now th
           detailsUrl: item.url
         };
         add(pokemon);
-        console.log(pokemon);
+        hideLoader();
       });
     }).catch(function (e) {
       console.error(e);
+      hideLoader();
     })
   }
 
   function loadDetails(item) {
+    showLoader();
     let url = item.detailsUrl;
     return fetch(url). then(function (response) {
       return response.json();
@@ -100,7 +102,7 @@ pokemonRepository.loadList().then(function() {
   let form = document.querySelector('#register-form');
   let emailInput = document.querySelector('#email');
   let passwordInput = document.querySelector('#password');
-  
+
   function showErrorMessage(input, message) {
     let container = input.parentElement; // The .input-wrapper
 
