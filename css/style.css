@@ -14,6 +14,7 @@ button corder colour (pokemon logo light blue): #2a75bb;
 
 header {
   background-color: #f0f0f0;
+  margin-bottom: 2px;
 }
 
 /* Font declartion */
@@ -25,6 +26,7 @@ body {
   /* Sets the font size to 16px */
   line-height: 1.6;
   /* Sets the line-height to 1.6 */
+  text-align: center;
 }
 
 
@@ -43,22 +45,20 @@ padding: 20px;
 border-bottom: 10px solid #000000;
 }
 
-
-
-
-/* centers pokemon logo   */
-/* .page-header {
-  max-width: 700px;
-  margin: 0 auto;
-} */
-
-
-/* centers the main body of the page   */
-.pokemon-text {
-  max-width: 700px;
-  margin: 0 auto;
-  padding: 20px;
+.pokemon-list-container {
+  text-align: center;
+  padding: 0 4px;
 }
+
+
+.pokemon-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+
+
 
 
 /* button styling */
