@@ -74,9 +74,9 @@ let pokemonRepository = (function () {  //  Entered the IIFE function and now th
     });
   }
 
-  function showDetails(pokemon) {  //Function for the event listener.
+  function showDetails(pokemon) {  //Function for the event listener. Show details for pokemon
     loadDetails(pokemon).then(function () {
-      console.log(pokemon);
+      showModal(pokemon); //show modal 
     });
   }
 
