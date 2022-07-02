@@ -105,7 +105,9 @@ let pokemonRepository = (function () {  //  Entered the IIFE function and now th
     closeButtonElement.classList.add('modal-close');
     closeButtonElement.addEventListener('click', hideModal);
 
-    
+    //title = pokemon name
+ let titleElement = document.createElement('h1');
+ titleElement.innerText = pokemon.name;
 
   return {
     add: add,         //Calling add function
