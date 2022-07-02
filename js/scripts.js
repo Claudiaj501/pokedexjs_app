@@ -141,6 +141,18 @@ let pokemonRepository = (function () {  //  Entered the IIFE function and now th
 
   modalContainer.classList.add('is-visible');
 
+  //swipe function: event listeners + call function
+  modal.addEventListener('touchstart', e => {
+    touchstartX = e.changedTouches[0].screenX;
+  })
+  modal.addEventListener('touchend', e => {
+    touchendX = e.changedTouches[0].screenX;
+    swipe(pokemon);
+  })
+
+}
+
+
   return {
     add: add,         //Calling add function
     getAll: getAll,    //Calling getAll function
