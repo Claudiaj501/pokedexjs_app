@@ -132,6 +132,15 @@ let pokemonRepository = (function () {  //  Entered the IIFE function and now th
    imageElement.classList.add('pokemon-image');
    imageElement.src = pokemon.imageUrl;
 
+
+  modal.appendChild(closeButtonElement);
+  modal.appendChild(imageElement);
+  modal.appendChild(titleElement);
+  modal.appendChild(contentElement);
+  modalContainer.appendChild(modal);
+
+  modalContainer.classList.add('is-visible');
+
   return {
     add: add,         //Calling add function
     getAll: getAll,    //Calling getAll function
