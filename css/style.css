@@ -109,7 +109,7 @@ differences and focus ring */
 
 
 
-
+/* adapting to different screen sizes */
 @media only screen and (max-width:800px) {
   /* For tablets: */
   .main {
