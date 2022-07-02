@@ -109,6 +109,24 @@ let pokemonRepository = (function () {  //  Entered the IIFE function and now th
  let titleElement = document.createElement('h1');
  titleElement.innerText = pokemon.name;
 
+ //content element including...
+  let contentElement = document.createElement('p');
+  //..height
+  contentElement.innerHTML = "Height: "+pokemon.height+"<br>";
+  //..and types
+  let types = [];
+  pokemon.types.forEach(function(typeObj){
+    types.push(" "+typeObj.type.name);
+  });
+  //one or multiple types?
+  if (types.length<2) {
+    contentElement.innerHTML += "Type:";
+  } else {
+    contentElement.innerHTML += "Types:";
+  }
+  contentElement.innerHTML += types.toString();
+
+
   return {
     add: add,         //Calling add function
     getAll: getAll,    //Calling getAll function
