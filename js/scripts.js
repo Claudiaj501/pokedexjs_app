@@ -67,8 +67,10 @@ let pokemonRepository = (function () {  //  Entered the IIFE function and now th
       item.imageUrl = details.sprites.font_default;
       item.height = details.height;
       item.types = details.types;
+      hideLoader();
     }).catch(function (e) {
       console.error(e);
+      hideLoader();
     });
   }
 
