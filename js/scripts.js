@@ -127,6 +127,11 @@ let pokemonRepository = (function () {  //  Entered the IIFE function and now th
   contentElement.innerHTML += types.toString();
 
 
+  //image of pokemon
+   let imageElement = document.createElement('img');
+   imageElement.classList.add('pokemon-image');
+   imageElement.src = pokemon.imageUrl;
+
   return {
     add: add,         //Calling add function
     getAll: getAll,    //Calling getAll function
