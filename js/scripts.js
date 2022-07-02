@@ -76,10 +76,24 @@ let pokemonRepository = (function () {  //  Entered the IIFE function and now th
 
   function showDetails(pokemon) {  //Function for the event listener. Show details for pokemon
     loadDetails(pokemon).then(function () {
-      showModal(pokemon); //show modal 
+      showModal(pokemon); //show modal
     });
   }
 
+
+  //show/hide pokeball loader
+  function showLoader() {
+    let loader = document.querySelector('.pokeball');
+    loader.classList.remove('hidden');
+  }
+  function hideLoader() {
+    let loader = document.querySelector('.pokeball');
+    loader.classList.add('hidden');
+  }
+
+
+
+  
   return {
     add: add,         //Calling add function
     getAll: getAll,    //Calling getAll function
