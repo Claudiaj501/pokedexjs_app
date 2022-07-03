@@ -4,12 +4,12 @@ Line break colour (black) : #000000;
 Header background colour (pokeball grey): #f0f0f0;
 button corder colour (pokemon logo light blue): #2a75bb;
 */
-:root {
+/* :root {
   /* text emphasis */
-  --light: 300;
+  /* --light: 300;
   --normal: 400;
   --semibold: 600;
-}
+} */
 
 
 header {
@@ -62,7 +62,7 @@ border-bottom: 10px solid #000000;
 /* button styling */
 .pokemonButton {
   font-size: 20px;
-  font-weight: var(--semibold);
+  font-weight: 700;
   font-family: inherit;
   text-transform: capitalize;
   text-decoration: none;
@@ -100,7 +100,7 @@ differences and focus ring */
   background-image: none;
 }
 
-.pokemonButton::-moz-focus-inner {
+.pokemonButton:-moz-focus-inner {
   border: 0;
 }
 
