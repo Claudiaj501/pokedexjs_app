@@ -97,171 +97,103 @@ let pokemonRepository = (function () {  //  Entered the IIFE function and now th
 
 
   function loadList() {
-    showLoader();
+    showLoadingMessage();
     return fetch(apiUrl).then(function (response) {
       return response.json();
     }).then(function (json) {
+      hideLoadingMessage();
       json.results.forEach(function (item) {
         let pokemon = {
-          name: item.name,
+          name: item.name.charAt(0).toUpperCase() + item.name.slice(1),
           detailsUrl: item.url
         };
         add(pokemon);
-        hideLoader();
       });
-    }).catch(function (e) {
-        console.error(e);
-        hideLoader();
+    }).catch(function (error) {
+        console.error(error);
     })
   }
 
   function loadDetails(item) {
-    showLoader();
+    showLoadingMessage();
     let url = item.detailsUrl;
     return fetch(url).then(function (response) {
       return response.json();
     }).then(function (details) {
+      hideLoadingMessage();
       // Now add the details to the item
-      item.imageUrl = details.sprites.font_default;
+      item.imageUrl = details.sprites.font_shiny;
+      item.id = details.id;
       item.height = details.height;
+      item.weight = details.weight;
       item.types = details.types;
-      hideLoader();
-    }).catch(function (e) {
-        console.error(e);
-        hideLoader();
+    }).catch(function (error) {
+        console.error(error);
     });
   }
 
-  function showDetails(pokemon) {  //Function for the event listener. Show details for pokemon
-    loadDetails(pokemon).then(function () {
-      showModal(pokemon); //show modal
+  function showLoadingMessage() {
+    document
+    .querySelector('.loading-message')
+    .classList
+    .add('visible-on');
+}
+
+
+  function hideLoadingMessage() {
+    document
+      .querySelector('.loading-message')
+      .classList
+      .remove('visible-on');
+  }
+
+  window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modalContainer.classList
+       .contains('is-visible')) {
+        hideDetails();
+       }
     });
-  }
 
+    modalContainer.addEventListener('click', (e) => {
+        let target = e.target;
+        if (target === modalContainer) {
+          hideDetails();
+        }
+      });
 
-  //show/hide pokeball loader
-  function showLoader() {
-    let loader = document.querySelector('.pokeball');
-        loader.classList.remove('hidden');
-  }
-  function hideLoader() {
-    let loader = document.querySelector('.pokeball');
-        loader.classList.add('hidden');
-  }
+      searchIcon.addEventListener('click', function() {
+        if (searchIcon.childElementCount === 1) {
+          let bodyHeader = document.querySelector('.body-header');
+          let searchQuery = document.createElement('input');
+          searchQuery.setAttribute('placeholder', 'Pokémon name');
+          searchQuery.classList.add('search-query');
+          searchQuery.autofocus = true;
+          bodyHeader.appendChild(searchQuery);
 
+          searchQuery.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+              searchQuery.value = searchQuery.value.charAt(0).toUpperCase()
+                                  + searchQuery.value.slice(1);
+              console.log(searchQuery.value);
+              if (search(searchQuery.value)[0] !== undefined) {
+                showDetails(search(searchQuery.value)[0]);
+              }
+            }
+          });
+        }
+      });
 
-  // Modal
-  let modalContainer = document.querySelector('#modal-container');
+      return {
+     add: add,
+     addListItem: addListItem,
+     getAll: getAll,
+     serach: search,
+     loadList: loadList,
+     loadDetails: loadDetails,
+     showLoadingMessage: showLoadingMessage,
+     hideLoadingMessage: hideLoadingMessage
+   };
 
-  function showModal(pokemon) {
-    modalContainer.innerHTML = '';
-    let modal = document.createElement('div');
-        modal.classList.add('modal');
-        modal.setAttribute("pointer-action", "none");
-
-    let closeButtonElement = document.createElement('button');
-        closeButtonElement.classList.add('modal-close');
-        closeButtonElement.addEventListener('click', hideModal);
-
-    //title = pokemon name
- let titleElement = document.createElement('h1');
-     titleElement.innerText = pokemon.name;
-
- //content element including...
-  let contentElement = document.createElement('p');
-  //..height
-      contentElement.innerHTML = "Height: "+pokemon.height+"<br>";
-  //..and types
-  let types = [];
-      pokemon.types.forEach(function(typeObj){
-      types.push(" "+typeObj.type.name);
-  });
-  //one or multiple types?
-  if (types.length<2) {
-    contentElement.innerHTML += "Type:";
-  } else {
-    contentElement.innerHTML += "Types:";
-  }
-  contentElement.innerHTML += types.toString();
-
-
-  //image of pokemon
-   let imageElement = document.createElement('img');
-       imageElement.classList.add('pokemon-image');
-       imageElement.src = pokemon.imageUrl;
-
-
-  modal.appendChild(closeButtonElement);
-  modal.appendChild(imageElement);
-  modal.appendChild(titleElement);
-  modal.appendChild(contentElement);
-  modalContainer.appendChild(modal);
-
-  modalContainer.classList.add('is-visible');
-
-  //swipe function: event listeners + call function
-  modal.addEventListener('touchstart', e => {
-    touchstartX = e.changedTouches[0].screenX;
-  })
-  modal.addEventListener('touchend', e => {
-    touchendX = e.changedTouches[0].screenX;
-    swipe(pokemon);
-  })
-
-}
-
-
-function hideModal() {
-  modalContainer.classList.remove('is-visible');
-}
-
-window.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && modalContainer.classList.contains('is-visible')) {
-    hideModal();
-  }
-});
-
-modalContainer.addEventListener('click', (e) => {
-  // Since this is also triggered when clicking INSIDE the modal
-  // We only want to close if the user clicks directly on the overlay
-  let target = e.target;
-  if (target === modalContainer) {
-    hideModal();
-    }
-  });
-
-  //Swipe function;
-  let touchstartX = 0;
-  let touchendX = 0;
-
-  function swipe(pokemon) {
-    //swipe left
-    if ((touchendX < (touchstartX-50)) && (pokemonList.indexOf(pokemon) < (pokemonList.length-1))) {
-      hideModal();
-      showDetails(pokemonList[pokemonList.indexOf(pokemon)+1]);
-      touchstartX = 0;
-      touchendX = 0;
-    }
-    //swipe right
-    if ((touchendX > (touchstartX+50)) && (pokemonList.indexOf(pokemon) > 0)) {
-      hideModal();
-      showDetails(pokemonList[pokemonList.indexOf(pokemon)-1]);
-      touchstartX = 0;
-      touchendX = 0;
-    }
-  }
-
-
-
-  //return public functions
-   return {
-     getAll,
-     add,
-     findName,
-     addListItem,
-     loadList,
-     loadDetails
-   }
  })();
 
 
@@ -270,80 +202,80 @@ pokemonRepository.loadList().then(function() {
   //data is now loaded
   pokemonRepository.getAll().forEach(function (pokemon) {
     pokemonRepository.addListItem(pokemon);
-  });
-});
+  })
+})
 
-// registration form - validate email address and password - show error messages if not valid
-(function() {
-  let form = document.querySelector('#register-form');
-  let emailInput = document.querySelector('#email');
-  let passwordInput = document.querySelector('#password');
-
-  function showErrorMessage(input, message) {
-    let container = input.parentElement; // The .input-wrapper
-
-    // Remove an existing error
-    let error = container.querySelector('.error-message');
-    if (error) {
-      container.removeChild(error);
-    }
-
-    // Now add the error, if the message is not empty
-    if (message) {
-      let error = document.createElement('div');
-      error.classList.add('error-message');
-      error.innerText = message;
-      container.appendChild(error);
-    }
-  }
-
-  function validateEmail() {
-    let value = emailInput.value;
-
-    if (!value) {
-      showErrorMessage(emailInput, 'E-mail is a required field.');
-      return false;
-    }
-
-    if (value.indexOf('@') === -1) {
-      showErrorMessage(emailInput, 'You must enter a valid e-mail address.');
-      return false;
-    }
-
-    showErrorMessage(emailInput, null);
-    return true;
-  }
-
-  function validatePassword() {
-    let value = passwordInput.value;
-
-    if (!value) {
-      showErrorMessage(passwordInput, 'Password is a required field.');
-      return false;
-    }
-
-    if (value.length < 8) {
-      showErrorMessage(passwordInput, 'The password needs to be at least 8 characters long.');
-      return false;
-    }
-
-    showErrorMessage(passwordInput, null);
-    return true;
-  }
-
-  function validateForm() {
-    let isValidEmail = validateEmail();
-    let isValidPassword = validatePassword();
-    return isValidEmail && isValidPassword;
-  }
-
-  form.addEventListener('submit', (e) => {
-    e.preventDefault(); // Do not submit to the server
-    if (validateForm()) {
-      alert('Success!');
-    }
-  });
-
-  emailInput.addEventListener('input', validateEmail);
-  passwordInput.addEventListener('input', validatePassword);
-})();
+// // registration form - validate email address and password - show error messages if not valid
+// (function() {
+//   let form = document.querySelector('#register-form');
+//   let emailInput = document.querySelector('#email');
+//   let passwordInput = document.querySelector('#password');
+//
+//   function showErrorMessage(input, message) {
+//     let container = input.parentElement; // The .input-wrapper
+//
+//     // Remove an existing error
+//     let error = container.querySelector('.error-message');
+//     if (error) {
+//       container.removeChild(error);
+//     }
+//
+//     // Now add the error, if the message is not empty
+//     if (message) {
+//       let error = document.createElement('div');
+//       error.classList.add('error-message');
+//       error.innerText = message;
+//       container.appendChild(error);
+//     }
+//   }
+//
+//   function validateEmail() {
+//     let value = emailInput.value;
+//
+//     if (!value) {
+//       showErrorMessage(emailInput, 'E-mail is a required field.');
+//       return false;
+//     }
+//
+//     if (value.indexOf('@') === -1) {
+//       showErrorMessage(emailInput, 'You must enter a valid e-mail address.');
+//       return false;
+//     }
+//
+//     showErrorMessage(emailInput, null);
+//     return true;
+//   }
+//
+//   function validatePassword() {
+//     let value = passwordInput.value;
+//
+//     if (!value) {
+//       showErrorMessage(passwordInput, 'Password is a required field.');
+//       return false;
+//     }
+//
+//     if (value.length < 8) {
+//       showErrorMessage(passwordInput, 'The password needs to be at least 8 characters long.');
+//       return false;
+//     }
+//
+//     showErrorMessage(passwordInput, null);
+//     return true;
+//   }
+//
+//   function validateForm() {
+//     let isValidEmail = validateEmail();
+//     let isValidPassword = validatePassword();
+//     return isValidEmail && isValidPassword;
+//   }
+//
+//   form.addEventListener('submit', (e) => {
+//     e.preventDefault(); // Do not submit to the server
+//     if (validateForm()) {
+//       alert('Success!');
+//     }
+//   });
+//
+//   emailInput.addEventListener('input', validateEmail);
+//   passwordInput.addEventListener('input', validatePassword);
+// })();
