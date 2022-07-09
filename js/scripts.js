@@ -17,9 +17,6 @@ let pokemonRepository = (function () {  //  Entered the IIFE function and now th
     }
   }
 
-  // function getAll() {    //Added getAll function to get all pokemon
-  //   return pokemonList;  //Return function takes the pokemon from the array
-  // }
 
   function addListItem(pokemon) {  // Function addListItem is used for DOM
     let pokemonList = document.querySelector('.pokemon-list');  //.pokemon-list is ul in index
@@ -85,11 +82,19 @@ let pokemonRepository = (function () {  //  Entered the IIFE function and now th
       modalContainer.classList.add('is-visible');
     });
   }
-  // function eventListener (button, pokemon) {  //eventListener has two parameters
-  //   button.addEventListener('click', function (){  //the function uses the event listner by click and calls showDetails
-  //   showDetails(pokemon);
-  //   });
-  // }
+
+  function hideDetails() {
+    modalContainer.classList.remove('is-visible');
+  }
+
+  function getAll() {
+    return pokemonList;
+  }
+
+  function search(pokemonName) {
+    return pokemonList.filter(pokemon => pokemon.name === pokemonName);
+  }
+
 
   function loadList() {
     showLoader();
