@@ -37,6 +37,54 @@ let pokemonRepository = (function () {  //  Entered the IIFE function and now th
       showDetails(pokemon);
     });
   }
+
+  function showDetails(pokemon) {
+    loadDetails(pokemon).then(function () {
+      modalContainer.innerHTML = '';
+
+      let modal = document.createElement('div');
+      modal.classList.add('modal');
+
+      let closeButtonElement = document.createElement('button');
+      closeButtonElement.classList.add('modal-close');
+      closeButtonElement.setAttribute('title', 'Close');
+      closeButtonElement.innerText = 'X';
+      closeButtonElement.addEventListener('click', hideDetails);
+
+      let titleElement = document.createElement('h1');
+      titleElement.innerText = pokemon.name;
+
+      let entryElement = document.createElement('p');
+      entryElement.innerText = `Entry: ${pokemon.id}`;
+
+      let heightElement = document.createElement('p');
+      heightElement.innerText = `Height: ${pokemon.height}`;
+
+      let weightElement = document.createElement('p');
+      weightElement.innerText = `Weight: ${pokemon.weight}`;
+
+      let typesElement = document.createElement('p');
+      typesElement.innerText = `Types: ${pokemon.types[0].type.name}`;
+
+      if (pokemon.types.length === 2) {
+        typesElement.innerText += `, ${pokemon.types[1].type.name}`;
+      }
+
+      let imageElement = document.createElement('img');
+      imageElement.src = pokemon.imageUrl;
+
+      modal.appendChild(closeButtonElement);
+      modal.appendChild(titleElement);
+      modal.appendChild(entryElement);
+      modal.appendChild(heightElement);
+      modal.appendChild(weightElement);
+      modal.appendChild(typesElement);
+      modal.appendChild(imageElement);
+      modalContainer.appendChild(modal);
+
+      modalContainer.classList.add('is-visible');
+    });
+  }
   // function eventListener (button, pokemon) {  //eventListener has two parameters
   //   button.addEventListener('click', function (){  //the function uses the event listner by click and calls showDetails
   //   showDetails(pokemon);
