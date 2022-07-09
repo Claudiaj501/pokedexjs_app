@@ -24,12 +24,12 @@ let pokemonRepository = (function () {  //  Entered the IIFE function and now th
   function addListItem(pokemon) {  // Function addListItem is used for DOM
     let pokemonList = document.querySelector('.pokemon-list');  //.pokemon-list is ul in index
     let listPokemon = document.createElement('li');   // Creating listpokemon as a list
-    let button = document.createElement('button');  // creating a button
-        button.innerText = pokemon.name;   // creating text to be pokemon names for button
-        button.classList.add('pokemonButton');  // Having the button take on style from css
-        listPokemon.appendChild(button);  // calling the listpokemon to the button
+    let listButton = document.createElement('button');  // creating a button
+        listButton.innerText = pokemon.name;   // creating text to be pokemon names for button
+        listButton.classList.add('pokemonButton');  // Having the button take on style from css
+        listPokemon.appendChild(listButton);  // calling the listpokemon to the button
         pokemonList.appendChild(listPokemon);  // calling the pokemonList to the list
-        button.addEventListener("click", function(event) {
+        listButton.addEventListener("click", function(event) {
         showDetails(pokemon);
     });
   }
