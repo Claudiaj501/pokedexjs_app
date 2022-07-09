@@ -20,16 +20,21 @@
   </head>
 
   <body>
-    <header class = "page-header">
+    <header class = "body-header">
+<!--
+    <h1>Pokédex</h1> -->
+    <a class="pokedex"><img src="img/pokemon_logo.png" alt="spokemon essentials logo" width = "300"></a>
+
+    <a class="search-icon"><img src="img/search-icon.png" alt="search icon"></a>
       <!-- logo image -->
-        <img src="img/pokemon_logo.png" alt="Logo for Pokedex. Text reads Pokemon Essentials" class="page-header__item" height= "100">
+        <!-- <img src="img/pokemon_logo.png" alt="Logo for Pokedex. Text reads Pokemon Essentials" class="page-header__item" height= "100"> -->
 
     </header>
 
     <main>
 
       <!-- Registration form -->
-      <form id='register-form'>
+      <!-- <form id='register-form'>
 
          <div class='input-wrapper'>
            <label for='email'>E-mail</label>
@@ -43,18 +48,11 @@
 
          <button>Register</button>
 
-      </form>
+      </form> -->
 
-      <div class="pokemon-list-container">
-          <ul class="pokemon-list"></ul>
-      </div>
-
-    <!-- Modal -->
-      <div id="modal-container" pointer-action="none"></div>
-    <!-- Pokeball Loader graphic -->
-      <div class="pokeball-wrapper">
-          <div class="pokeball hidden"></div>
-      </div>
+      <p class="loading-message">Loading...</p>
+      <ul class="pokemon-list"></ul>
+      <div id="modal-container"></div>
 
 
 <!-- JavaScript links -->
@@ -65,7 +63,7 @@
 <!-- pointer event polyfill -->
       <script src= "pointer-event-polyfill.js"></script>
 
-      
+
         <script src="js/scripts.js"></script>
 
 

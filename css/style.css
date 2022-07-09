@@ -3,23 +3,195 @@
   font-family: 'Lato', sans-serif;
 }
 
+header {
+  display: grid;
+  grid-template-columns: 10fr 1fr 1fr;
+  min-height: 10vh;
+  border-bottom: 2px solid black;
+}
 
+
+
+.loading-message {
+  position: absolute;
+  top: 11%;
+  left: 43%;
+  color: rgba(0,0,0,0);
+  font-size: 20px;
+  text-align: center;
+  font-weight: bold;
+  padding-left: 5%;
+}
+
+.modal {
+  margin: auto;
+  margin-top: 15%;
+  box-sizing: border-box;
+  background: #fff;
+  padding: 5px;
+  width: 20%;
+  max-width: 700px;
+  text-align: center;
+}
+
+.modal h1 {
+  padding-left: 0.75em;
+}
+
+.modal-close {
+  float: right;
+  cursor: pointer;
+  font-size: x-large;
+  -webkit-appearance: none;
+  border: 0;
+  background: none;
+  color: #777;
+}
+
+.modal-close:hover {
+  background-color: #ff8181;
+  border-radius: 50%;
+}
+
+#modal-container {
+  display: none;
+}
+
+#modal-container.is-visible {
+  display: block;
+  position: fixed;
+  padding: 20px;
+  box-sizing: border-box;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  overflow: auto;
+  text-align: center;
+}
+
+.pokemon-list {
+  display: grid;
+  gap: 10px 55px;
+  text-align: center;
+  list-style-type: none;
+  margin-top: 50px;
+}
+
+
+
+.search-icon {
+  cursor: pointer;
+}
+
+.search-icon img {
+  background-color: #f4f4f4;
+  border-radius: 30%;
+  max-width: 2em;
+  margin: 50px;
+}
+
+.search-icon img:hover {
+  background-color: #e8e8e8;
+  border-radius: 30%;
+}
+
+.search-query {
+  margin: 2em auto;
+}
+
+/* button styling */
+.selected-button {
+  font-size: 20px;
+  font-weight: 700;
+  font-family: inherit;
+  text-transform: capitalize;
+  text-decoration: none;
+  color: #15151c;
+  border: groove;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  background-color: #e3e9ef;
+  margin: 2px 0;
+  padding: 0;
+  width: 100%;
+  max-width: 512px;
+  height: 50px;
+  line-height: 50px;
+  transition: opacity 0.8s;
+}
+
+.selected-button:hover,
+.selected-button:focus,
+.selected-button:active {
+  background-color: #7691b2;
+  color: #faf9f8;
+  opacity: 0.8;
+  outline: 0;
+}
+/* .selected-button {
+  border: 3px solid #800080;
+  cursor: pointer;
+  padding: 2%;
+  margin: 0;
+}
+
+.selected-button:hover {
+  background-color: #c1c1c1;
+} */
+
+title {
+  display: none;
+}
+
+.visible-on {
+  color: rgba(255,0,0,255);
+}
+
+@media all and (max-width: 330px) {
+  .modal h1 {
+    font-size: small;
+  }
+
+  header {
+    display: block;
+  }
+
+  header h1 {
+    font-size: small;
+    max-height: 5px;
+  }
+}
+
+@media all and (min-width: 330px) and (max-width: 400px) {
+  .modal h1 {
+    font-size: medium;
+  }
+}
+
+@media all and (max-width: 1300px) {
+  .modal {
+    width: 100%;
+  }
+}
+/*
 header {
   background-color: #f0f0f0;
   margin-bottom: 2px;
 }
 
 /* Font declartion */
-body {
+/* body {
   color: #000000;
   font-family: 'Lato', sans-serif;
   font-weight: 400; /*font = regular */
-  font-size: 16px;
+  /* font-size: 16px; */
   /* Sets the font size to 16px */
-  line-height: 1.6;
+  /* line-height: 1.6; */
   /* Sets the line-height to 1.6 */
-  text-align: center;
-}
+  /* text-align: center;
+} */
 
 
 
@@ -27,29 +199,29 @@ body {
 
 /* ALL PAGES */
 /* menu bar and logo */
-.page-header {
+/* .page-header {
 display: flex;
 width: 100%;
 padding: 20px;
 border-bottom: 10px solid #000000;
-}
+} */
 
-.pokemon-list-container {
+/* .pokemon-list-container {
   text-align: center;
   padding: 0 4px;
-}
+} */
 
 
-.pokemon-list {
+/* .pokemon-list {
   list-style-type: none;
   padding: 0;
   margin: 0;
   text-align: center;
-}
+} */
 
 
 /* button styling */
-.pokemonButton {
+/* .pokemonButton {
   font-size: 20px;
   font-weight: 700;
   font-family: inherit;
@@ -75,53 +247,53 @@ border-bottom: 10px solid #000000;
   color: #faf9f8;
   opacity: 0.8;
   outline: 0;
-}
+} */
 
 /* Webkit / Chrome Specific CSS to remove tap
 highlight color */
-.pokemonButton {
+/* .pokemonButton {
   -webkit-tap-highlight-color: transparent;
-}
+} */
 
 /* Firefox Specific CSS to remove button
 differences and focus ring */
-.pokemonButton {
+/* .pokemonButton {
   background-image: none;
-}
+} */
 
-.pokemonButton:-moz-focus-inner {
+/* .pokemonButton:-moz-focus-inner {
   border: 0;
-}
+} */
 
 /* Modal */
 
-#modal-container {
+/* #modal-container {
   display: none;
 }
 
-#modal-container.is-visible {
+#modal-container.is-visible { */
   /* CSS for modal container - add your own desired CSS styles here */
-  position: fixed;
+  /* position: fixed;
   padding: 20px;
   box-sizing: border-box;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.5); */
 
   /* to show it above other content */
-  z-index: 999;
+  /* z-index: 999; */
 
   /* to allow scrolling if the screen is not high enough */
-  overflow: auto;
+  /* overflow: auto; */
 
   /* this is used to center the modal */
-  display: grid;
+  /* display: grid;
   text-align: center;
-}
+} */
 
-.modal {
+/* .modal {
   margin: auto;
   display: inline-block;
   box-sizing: border-box;
@@ -166,15 +338,15 @@ differences and focus ring */
 
 .pokemon-image {
   float: right;
-}
+} */
 
 
 /* Pokeball Loader */
-.hidden {
+/* .hidden {
   display: none;
-}
+} */
 
-.pokeball-wrapper {
+/* .pokeball-wrapper {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -214,10 +386,10 @@ differences and focus ring */
   bottom: 18px;
   right: 18px;
   z-index: 1;
-}
+} */
 
 /* AnimationFrames */
-@keyframes frames {
+/* @keyframes frames {
   0% {
     transform: rotate(0deg);
   }
@@ -225,15 +397,15 @@ differences and focus ring */
   100% {
     transform: rotate(360deg);
   }
-}
+} */
 
 
 
 
 /* adapting to different screen sizes */
-@media only screen and (max-width:800px) {
+/* @media only screen and (max-width:800px) { */
   /* For tablets: */
-  .main {
+  /* .main {
     width: 80%;
     padding: 0;
   }
@@ -241,9 +413,10 @@ differences and focus ring */
     width: 100%;
   }
 }
-@media only screen and (max-width:500px) {
+@media only screen and (max-width:500px) { */
   /* For mobile phones: */
-  .menu, .main, .right {
+  /* .menu, .main, .right {
     width: 100%;
   }
 }
+*/
