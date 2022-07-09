@@ -2,6 +2,8 @@
 let pokemonRepository = (function () {  //  Entered the IIFE function and now the pokemonList is "protected"
   let pokemonList = [];
   let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=150';
+  let modalContainer = document.querySelector('#modal-container');
+  let searchIcon = document.querySelector('.search-icon');
 
   function add(pokemon) {   //Entered add function that declares typeof pokemon
     if (
