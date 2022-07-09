@@ -17,23 +17,26 @@ let pokemonRepository = (function () {  //  Entered the IIFE function and now th
     }
   }
 
-  function getAll() {    //Added getAll function to get all pokemon
-    return pokemonList;  //Return function takes the pokemon from the array
-  }
+  // function getAll() {    //Added getAll function to get all pokemon
+  //   return pokemonList;  //Return function takes the pokemon from the array
+  // }
 
   function addListItem(pokemon) {  // Function addListItem is used for DOM
     let pokemonList = document.querySelector('.pokemon-list');  //.pokemon-list is ul in index
     let listPokemon = document.createElement('li');   // Creating listpokemon as a list
     let listButton = document.createElement('button');  // creating a button
-        listButton.innerText = pokemon.name;   // creating text to be pokemon names for button
-        listButton.classList.add('pokemonButton');  // Having the button take on style from css
+        listButton.innerHTML = `<strong>${pokemon.name}</strong>`;
+        listButton.classList.add('selected-button');
         listPokemon.appendChild(listButton);  // calling the listpokemon to the button
         pokemonList.appendChild(listPokemon);  // calling the pokemonList to the list
-        listButton.addEventListener("click", function(event) {
-        showDetails(pokemon);
-    });
+        listButtonEventListener(listButton, pokemon);
   }
 
+  function listButtonEventListener(listButton, pokemon) {
+    listButton.addEventListener('click', function() {
+      showDetails(pokemon);
+    });
+  }
   // function eventListener (button, pokemon) {  //eventListener has two parameters
   //   button.addEventListener('click', function (){  //the function uses the event listner by click and calls showDetails
   //   showDetails(pokemon);
