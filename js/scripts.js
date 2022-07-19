@@ -162,7 +162,10 @@ let pokemonRepository = (function () {  //  Entered the IIFE function and now th
       });
 
       searchIcon.addEventListener('click', function() {
-        if (searchIcon.childElementCount === 1) {
+        if (document.getElementsByClassName('search-query')[0]) {
+        return
+        }
+         else if (searchIcon.childElementCount === 1) {
           let bodyHeader = document.querySelector('.body-header');
           let searchQuery = document.createElement('input');
           searchQuery.setAttribute('placeholder', 'Pokémon name');
