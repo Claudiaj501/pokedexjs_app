@@ -123,6 +123,7 @@ let pokemonRepository = (function () {  //  Entered the IIFE function and now th
       hideLoadingMessage();
       // Now add the details to the item
       item.imageUrl = details.sprites.font_shiny;
+      item.imageUrl = details.sprites.front_default;
       item.id = details.id;
       item.height = details.height;
       item.weight = details.weight;
