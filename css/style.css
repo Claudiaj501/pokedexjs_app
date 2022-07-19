@@ -38,6 +38,10 @@ header {
   padding-left: 0.75em;
 }
 
+.modal img {
+  width : 10rem;
+}
+
 .modal-close {
   float: right;
   cursor: pointer;

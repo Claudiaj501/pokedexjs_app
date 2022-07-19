@@ -164,15 +164,15 @@ let pokemonRepository = (function () {  //  Entered the IIFE function and now th
 
       searchIcon.addEventListener('click', function() {
         if (document.getElementsByClassName('search-query')[0]) {
-        return
-        }
-         else if (searchIcon.childElementCount === 1) {
-          let bodyHeader = document.querySelector('.body-header');
-          let searchQuery = document.createElement('input');
-          searchQuery.setAttribute('placeholder', 'Pokémon name');
-          searchQuery.classList.add('search-query');
-          searchQuery.autofocus = true;
-          bodyHeader.appendChild(searchQuery);
+          return
+          }
+          else if (searchIcon.childElementCount === 1) {
+            let bodyHeader = document.querySelector('.body-header');
+            let searchQuery = document.createElement('input');
+            searchQuery.setAttribute('placeholder', 'Pokémon name');
+            searchQuery.classList.add('search-query');
+            searchQuery.autofocus = true;
+            bodyHeader.appendChild(searchQuery);
 
           searchQuery.addEventListener('keydown', (e) => {
             if (e.key === 'Enter') {
@@ -180,7 +180,7 @@ let pokemonRepository = (function () {  //  Entered the IIFE function and now th
                                   + searchQuery.value.slice(1);
               console.log(searchQuery.value);
               if (search(searchQuery.value)[0] !== undefined) {
-                showDetails(search(searchQuery.value)[0]);
+                  showDetails(search(searchQuery.value)[0]);
               }
             }
           });
