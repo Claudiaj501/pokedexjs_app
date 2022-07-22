@@ -1,22 +1,31 @@
 /* lines under navbar */
 
-.red_line {
+#red_line {
   background-color: #ee1515;
   width: 100%;
   height: 25px;
   line-height: 80%;
 }
 
-.black_line {
+#black_line {
   background-color: #222224;
   width: 100%;
   height: 15px;
   line-height: 80%;
 }
 
+/* logo image size */
 .navbar img {
   width: 10em;
 }
+
+/* search icon size */
+.search {
+  width: 2em;
+  margin: 5px;
+}
+
+
 
 
 
