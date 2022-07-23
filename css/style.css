@@ -20,9 +20,12 @@
 }
 
 /* search icon size */
-.search {
-  width: 2em;
-  margin: 5px;
+#search {
+  margin-right: 5px;
+  margin-bottom: 10px;
+  height: 20px;
+  width: auto;
+  object-position: bottom;
 }
 
 
