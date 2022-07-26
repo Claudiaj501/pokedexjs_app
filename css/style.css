@@ -37,11 +37,9 @@ ul {
 body {
   font-family: 'Lato', sans-serif;
   text-align: center;
+  background-image: url("../img/pikachu.png");
 }
 
-#pikachu {
-  background-image: url('pikachu.png');
-}
 
 .pokemon-modal {
   margin: auto;
